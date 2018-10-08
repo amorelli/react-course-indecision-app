@@ -6,25 +6,13 @@ console.log('app.js is running.');
 
 /* APP START */
 var app = {
-  title: 'Indecision App',
-  subtitle: 'Can\'t decide?',
-  options: []
+  title: 'Build-It Visibility Toggle'
 };
 
-var onFormSubmit = function onFormSubmit(e) {
-  e.preventDefault();
+var visibility = false;
 
-  var option = e.target.elements.option.value;
-
-  if (option) {
-    app.options.push(option);
-    e.target.elements.option.value = '';
-    renderApp();
-  }
-};
-
-var removeAll = function removeAll() {
-  app.options = [];
+var toggleDetails = function toggleDetails() {
+  visibility = !visibility;
   renderApp();
 };
 
@@ -37,46 +25,15 @@ var renderApp = function renderApp() {
       null,
       app.title
     ),
-    app.subtitle && React.createElement(
-      'p',
-      null,
-      app.subtitle
-    ),
-    React.createElement(
-      'p',
-      null,
-      app.options.length > 0 ? 'Here are your options:' : 'No options.'
-    ),
-    React.createElement(
-      'p',
-      null,
-      app.options.length
-    ),
     React.createElement(
       'button',
-      { onClick: removeAll },
-      'Remove All'
+      { onClick: toggleDetails },
+      visibility ? 'Hide Details' : 'Show Details'
     ),
-    React.createElement(
-      'ol',
+    visibility && React.createElement(
+      'p',
       null,
-      app.options.map(function (option) {
-        return React.createElement(
-          'li',
-          { key: option },
-          option
-        );
-      })
-    ),
-    React.createElement(
-      'form',
-      { onSubmit: onFormSubmit },
-      React.createElement('input', { type: 'text', name: 'option' }),
-      React.createElement(
-        'button',
-        null,
-        'Add Option'
-      )
+      'Hello'
     )
   );
 
