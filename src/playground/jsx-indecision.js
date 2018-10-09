@@ -1,4 +1,4 @@
-/* eslint-disable react-in-jsx-scope */
+/* eslint-disable */
 
 console.log('app.js is running.');
 
