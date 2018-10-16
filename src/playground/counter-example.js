@@ -1,12 +1,11 @@
 /* eslint-disable */
-const initialState = 0;
 class Counter extends React.Component {
   constructor(props) {
     super(props);
     this.addOne = this.addOne.bind(this);
     this.minusOne = this.minusOne.bind(this);
     this.reset = this.reset.bind(this);
-    this.state = { count: initialState };
+    this.state = { count: props.count };
   }
   addOne() {
     this.setState((state) => {
@@ -20,7 +19,7 @@ class Counter extends React.Component {
   }
   reset() {
     this.setState(() => {
-      return { count: initialState };
+      return { count: this.props.count };
     });
   }
   render() {
@@ -35,7 +34,9 @@ class Counter extends React.Component {
   }
 }
 
-
+Counter.defaultProps = {
+  count: 0
+}
 
 ReactDOM.render(<Counter />, document.getElementById('app'));
 
