@@ -1,7 +1,5 @@
-// import subtract, { square, add } from './utils';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-// console.log(square(4), add(10, 1), subtract(3, 1));
-
-import isSenior, { isAdult, canDrink } from './person';
-
-console.log(isAdult(18), canDrink(2), isSenior(65));
+const template = <p>This is JSX from Webpack.</p>
+ReactDOM.render(template, document.getElementById('app'));
