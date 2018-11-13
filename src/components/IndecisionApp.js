@@ -30,9 +30,9 @@ export default class IndecisionApp extends React.Component {
   }
   addOption = (option) => {
     if (!option) {
-      return 'Enter valid value to add item.';
+      return '⚠ Enter valid value to add item.';
     } else if (this.state.options.indexOf(option) > -1) {
-      return 'This option already exists.';
+      return '⚠ This option already exists.';
     }
 
     this.setState((state) => ({ options: state.options.concat([option]) }) );
@@ -69,15 +69,17 @@ export default class IndecisionApp extends React.Component {
           <Action 
             hasOptions={this.state.options.length > 0}
             handlePick = {this.handlePick}
-            />
-          <Options 
-            options = {this.state.options} 
-            deleteOptions = {this.deleteOptions}
-            deleteOption = {this.deleteOption}
-            />
-          <AddOption 
-            addOption = {this.addOption}
           />
+          <div className="widget">
+            <Options 
+              options = {this.state.options} 
+              deleteOptions = {this.deleteOptions}
+              deleteOption = {this.deleteOption}
+            />
+            <AddOption 
+              addOption = {this.addOption}
+            />
+          </div>
         </div>
         <OptionModal 
           selectedOption={this.state.selectedOption}
