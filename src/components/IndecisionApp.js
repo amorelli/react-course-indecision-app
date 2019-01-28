@@ -12,22 +12,27 @@ export default class IndecisionApp extends React.Component {
     options: [],
     selectedOption: undefined
    };
+
   deleteOptions = () => {
     this.setState(() =>  ({ options: [] }) );
   }
+
   deleteOption = (optionToRemove) => {
     this.setState((prevState) => ({
       options: prevState.options.filter((option) => optionToRemove !== option)
     }));
   }
+
   clearOption = () => {
     this.setState(() => ({ selectedOption: undefined }) )
   }
+
   handlePick = () => {
     const randomNum = Math.floor(Math.random() * this.state.options.length);
     const option = this.state.options[randomNum];
     this.setState(() => ({ selectedOption: option }) )
   }
+
   addOption = (option) => {
     if (!option) {
       return '⚠ Enter valid value to add item.';
@@ -37,6 +42,7 @@ export default class IndecisionApp extends React.Component {
 
     this.setState((state) => ({ options: state.options.concat([option]) }) );
   }
+
   componentDidMount() {
     try {
       const json = localStorage.getItem('options');
@@ -49,12 +55,14 @@ export default class IndecisionApp extends React.Component {
 
     }
   }
+
   componentDidUpdate(prevProps, prevState) {
     if ( prevState.options.length !== this.state.options.length ) {
       const json = JSON.stringify(this.state.options);
       localStorage.setItem('options', json);
     } 
   }
+  
   componentWillUnmount() {
     console.log('Component unmounted')
   }
