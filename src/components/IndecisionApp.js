@@ -62,9 +62,9 @@ export default class IndecisionApp extends React.Component {
       localStorage.setItem('options', json);
     } 
   }
-  
+
   componentWillUnmount() {
-    console.log('Component unmounted')
+    console.log('Component unmounted');
   }
   
   render() {
